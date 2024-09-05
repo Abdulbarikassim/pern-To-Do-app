@@ -1,23 +1,24 @@
-# Pern To-do application.
+
+
+# Pern To-Do Application
+
 ## Overview
 
-The **Pern To-Do Application** is a full-stack CRUD(create,Read, Update, Delete) application developed using the pern stack. This application allows users to manage their to-do tasks efficiently with a modern web interface and robust backend. 
+The **Pern To-Do Application** is a full-stack CRUD (Create, Read, Update, Delete) application developed using the PERN stack. This application allows users to manage their to-do tasks efficiently with a modern web interface and robust backend.
 
-## Stack. 
+## Stack
 
-	•	**PostgreSQL**: A powerful, open-source relational database used to store and manage application data.
-	•	**Express:** A minimal and flexible Node.js web application framework that provides a robust set of features for building web applications and APIs.
-	•	**React**: A popular JavaScript library for building user interfaces, used here to create a dynamic and responsive frontend.
-	•	**Node.js**: A JavaScript runtime built on Chrome’s V8 engine, used to run the backend server and handle API requests.
- 
-###Features
+- **PostgreSQL**: A powerful, open-source relational database used to store and manage application data.
+- **Express**: A minimal and flexible Node.js web application framework that provides a robust set of features for building web applications and APIs.
+- **React**: A popular JavaScript library for building user interfaces, used here to create a dynamic and responsive frontend.
+- **Node.js**: A JavaScript runtime built on Chrome's V8 engine, used to run the backend server and handle API requests.
 
-	•	**Create Tasks**: Add new tasks with titles and descriptions.
-	•	**Read Tasks**: View a list of all existing tasks.
-	•	**Update Tasks**: Edit existing tasks to modify titles and descriptions.
-	•	**Delete Tasks**: Remove tasks from the list.
+## Features
 
-
+- **Create Tasks**: Add new tasks with titles and descriptions.
+- **Read Tasks**: View a list of all existing tasks.
+- **Update Tasks**: Edit existing tasks to modify titles and descriptions.
+- **Delete Tasks**: Remove tasks from the list.
 
 ## Getting Started
 
