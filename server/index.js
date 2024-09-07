@@ -13,11 +13,11 @@ app.use(express.json());
 app.post("/todo", async (req, res) => {
   try {
     const { description } = req.body;
-    const result = await pool.query(
+    const newTodo = await pool.query(
       "INSERT INTO todo (description) VALUES ($1) RETURNING *",
       [description]
     );
-    res.json(result.rows[0]); // Return the newly inserted row
+    res.json(newTodo.rows[0]); // Return the newly inserted row
   } catch (err) {
     console.error(err.message);
     res
@@ -27,6 +27,16 @@ app.post("/todo", async (req, res) => {
 });
 
 // GET A TODO.
+
+app.get("/todo", async (req, res) => {
+  try {
+    const allTodo = await pool.query("SELECT * FROM todo");
+    res.json(allTodo.rows);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).json({ error: "An error occured while adding the todo." });
+  }
+});
 
 // UPDATE A TODO.
 
