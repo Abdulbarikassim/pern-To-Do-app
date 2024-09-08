@@ -26,7 +26,7 @@ app.post("/todo", async (req, res) => {
   }
 });
 
-// GET A TODO ALL TODOS.
+// GET A  ALL TODOS.
 
 app.get("/todo", async (req, res) => {
   try {
