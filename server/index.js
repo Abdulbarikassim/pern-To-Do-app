@@ -1,4 +1,4 @@
-import express from "express";
+import express, { json } from "express";
 import cors from "cors";
 import pool from "./db.js";
 
@@ -26,7 +26,7 @@ app.post("/todo", async (req, res) => {
   }
 });
 
-// GET A TODO.
+// GET A TODO ALL TODOS.
 
 app.get("/todo", async (req, res) => {
   try {
@@ -38,6 +38,21 @@ app.get("/todo", async (req, res) => {
   }
 });
 
+// GET A TODO.
+
+app.get("/todo/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const getTodo = await pool.query("SELECT * FROM todo WHERE todo_id= $1", [
+      id,
+    ]);
+    res.json(getTodo.rows[0]);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500);
+    json({ error: "An error occured while getting the item." });
+  }
+});
 // UPDATE A TODO.
 
 // DELETE A TODO.
