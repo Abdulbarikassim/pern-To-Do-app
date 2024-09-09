@@ -17,7 +17,7 @@ app.post("/todo", async (req, res) => {
       "INSERT INTO todo (description) VALUES ($1) RETURNING *",
       [description]
     );
-    res.json(newTodo.rows[0]); // Return the newly inserted row
+    res.status(201).json(newTodo.rows[0]); // Return the newly inserted row
   } catch (err) {
     console.error(err.message);
     res
@@ -46,6 +46,9 @@ app.get("/todo/:id", async (req, res) => {
     const getTodo = await pool.query("SELECT * FROM todo WHERE todo_id= $1", [
       id,
     ]);
+    if (getTodo.rows.length === 0) {
+      return res.status(400).json({ error: "Todo item not found" });
+    }
     res.json(getTodo.rows[0]);
   } catch (err) {
     console.error(err.message);
@@ -63,6 +66,9 @@ app.put("/todo/:id", async (req, res) => {
       "UPDATE todo SET description = $1 WHERE todo_id = $2",
       [description, id]
     );
+    if (updateToDo.rowCount === 0) {
+      return res.status(400).json({ error: "Item to  update  not found." });
+    }
     res.json("update the todo item.");
   } catch (err) {
     console.error(err.message);
@@ -70,7 +76,21 @@ app.put("/todo/:id", async (req, res) => {
 });
 
 // DELETE A TODO.
-
+app.delete("/todo/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const deleteToDo = await pool.query(
+      "DELETE FROM todo WHERE todo_id = $1 ",
+      [id]
+    );
+    if (deleteToDo.rowCount === 0) {
+      return res.status(400).json({ error: "Todo item to delete not found." });
+    }
+    res.json("Deleted the Todo item successfully.");
+  } catch (err) {
+    console.error(err.message);
+  }
+});
 // give  a get request.
 app.get("/", (req, res) => {
   res.send("Hello World!");
