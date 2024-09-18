@@ -12,7 +12,7 @@ const InputTodos = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
       });
-      console.log(response);
+      window.location = "/";
     } catch (err) {
       console.error(err.message);
     }
@@ -20,7 +20,6 @@ const InputTodos = () => {
 
   return (
     <div className="text-center">
-      f
       <h1 className=" text-3xl font-bold text-green-600 mt-5 p-12 ">
         Pern Todo
       </h1>
