@@ -91,10 +91,8 @@ app.delete("/todo/:id", async (req, res) => {
     console.error(err.message);
   }
 });
-// give  a get request.
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
+// Start the server
+
 app.listen(port, () => {
   console.log("The server has started on port: ", port);
 });
